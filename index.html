@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173f35"><meta name="description" content="Practica matemáticas a tu ritmo, con alegría y sin miedo a equivocarte.">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css"><title>Multiplica Conmigo</title>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Inicio Multiplica Conmigo"><span class="brand-mark" aria-hidden="true">✳</span><span>Multiplica <b>Conmigo</b></span></a>
+  <nav aria-label="Menú principal"><button class="nav-btn active" data-view="practice">Practicar</button><button class="nav-btn" data-view="progress">Mi progreso</button><button class="nav-btn" data-view="help">Ayuda</button></nav>
+</header>
+<main id="app" class="app" tabindex="-1">
+<section id="home-view" class="view">
+  <div class="welcome"><div class="welcome-copy"><p class="eyebrow">APRENDE A TU RITMO</p><h1>¡Tú puedes<br><span>con las mates!</span></h1><p class="lead">Un pasito a la vez. Practica, descubre y celebra cada logro.</p></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="shape shape-one">×</div><div class="shape shape-two">＋</div><div class="shape shape-three">★</div><div class="big-number">12</div></div></div>
+  <form id="start-form" class="panel start-panel">
+    <label for="child-name">¿Cómo te llamas?</label><input id="child-name" name="child-name" maxlength="30" autocomplete="given-name" placeholder="Escribe tu nombre (opcional)">
+    <div class="section-heading"><h2>¿Qué quieres practicar?</h2><span class="helper">Puedes cambiar cuando quieras</span></div>
+    <div class="operation-grid" role="group" aria-label="Tipo de ejercicio">
+      <button type="button" class="operation selected" data-op="multiply"><span class="op-icon">×</span><strong>Multiplicar</strong><small>Tablas del 1 al 12</small></button>
+      <button type="button" class="operation" data-op="divide"><span class="op-icon">÷</span><strong>Dividir</strong><small>Reparte en partes iguales</small></button>
+      <button type="button" class="operation" data-op="subtract"><span class="op-icon">−</span><strong>Restar</strong><small>Encuentra la diferencia</small></button>
+    </div>
+    <div id="table-picker-wrap"><div class="section-heading"><h2 id="table-heading">Elige tu tabla</h2><span class="helper" id="table-helper">Del 1 al 12</span></div><div class="table-grid" id="table-grid" role="group" aria-label="Selecciona una tabla"></div></div>
+    <div class="section-heading"><h2>¿Cómo respondes?</h2><span class="helper">Elige tu forma favorita</span></div>
+    <div class="mode-row"><button type="button" class="mode selected" data-mode="choices">🔘 Tocar una respuesta</button><button type="button" class="mode" data-mode="keypad">⌨️ Escribir con teclado</button></div>
+    <button class="primary start-button" type="submit">¡Vamos a practicar! <span aria-hidden="true">→</span></button>
+    <p class="privacy-note">Tu progreso se guarda en este dispositivo. No necesitas crear una cuenta.</p>
+  </form>
+</section>
+<section id="session-view" class="view hidden">
+  <div class="session-head"><button class="back-btn" id="leave-session">← Salir</button><div class="session-label" id="session-label">Tabla del 2</div><button class="quiet-btn" id="pause-btn">Pausa ⏸</button></div>
+  <div class="progress-track" role="progressbar" aria-label="Progreso del ejercicio" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-track"><div id="progress-fill"></div></div>
+  <div class="session-meta"><span id="question-count">Pregunta 1 de 10</span><span id="streak">✨ ¡Vamos!</span></div>
+  <div class="exercise-card" id="exercise-card">
+    <p class="eyebrow" id="exercise-caption">RESUELVE A TU RITMO</p><div class="equation" aria-live="polite"><span id="factor-a">2</span><span id="operator">×</span><span id="factor-b">1</span><span>=</span><span class="answer-slot" id="answer-slot">?</span></div>
+    <p class="prompt" id="prompt">¿Cuánto es?</p>
+    <div id="choices" class="answers" role="group" aria-label="Opciones de respuesta"></div>
+    <form id="answer-form" class="keypad-area hidden"><label class="sr-only" for="answer-input">Tu respuesta</label><input id="answer-input" type="number" inputmode="numeric" min="0" max="999" placeholder="Tu respuesta" autocomplete="off"><button class="primary" type="submit">Comprobar</button><div class="number-pad" id="number-pad"><button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button><button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button><button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button><button type="button" data-action="clear">Borrar</button><button type="button" data-digit="0">0</button><button type="button" data-action="back">⌫</button></div></form>
+    <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+  </div>
+  <div class="session-footer"><span>🌱 Equivocarse es parte de aprender.</span><button id="hint-btn" class="quiet-btn">Dame una pista 💡</button></div>
+</section>
+<section id="complete-view" class="view hidden">
+ <div class="completion panel"><div class="celebration" aria-hidden="true">🎉</div><p class="eyebrow">¡LO HAS CONSEGUIDO!</p><h1 id="complete-title">¡Tabla completada!</h1><p id="complete-message" class="lead">Cada práctica te hace más fuerte.</p><div class="stats-grid"><div><strong id="stat-correct">10</strong><span>Aciertos</span></div><div><strong id="stat-retries">0</strong><span>Nuevos intentos</span></div><div><strong id="stat-time">2:30</strong><span>Tiempo</span></div></div><p class="choice-question">¿Qué te gustaría hacer ahora?</p><button id="repeat-table" class="primary full">🔁 Practicar esta tabla otra vez</button><button id="next-table" class="secondary full">➡️ Probar la tabla siguiente</button><button id="choose-again" class="text-button full">Elegir otra actividad</button></div>
+</section>
+<section id="progress-view" class="view hidden">
+ <div class="page-heading"><p class="eyebrow">CADA PASO CUENTA</p><h1>Mi progreso 🌟</h1><p class="lead">Mira todo lo que has practicado.</p></div><div class="panel"><div class="progress-summary"><div><span>Sesiones completadas</span><strong id="total-sessions">0</strong></div><div><span>Respuestas acertadas</span><strong id="total-correct">0</strong></div><div><span>Tablas practicadas</span><strong id="tables-done">0 / 12</strong></div></div><div id="saved-sessions" class="saved-sessions"></div><div class="progress-actions"><button id="export-progress" class="secondary">Descargar mis resultados</button><button id="clear-progress" class="text-button">Borrar el progreso de este dispositivo</button></div></div></section>
+<section id="help-view" class="view hidden"><div class="page-heading"><p class="eyebrow">PARA FAMILIAS Y DOCENTES</p><h1>Aprender sin presión 💚</h1><p class="lead">Una experiencia predecible, amable y flexible.</p></div><div class="panel help-content"><h2>Cómo funciona</h2><ul><li>Practica una tabla con 10 ejercicios cortos.</li><li>Elige entre tocar una respuesta o escribirla con un teclado grande.</li><li>Si la respuesta no es la esperada, solo aparece “Vamos a intentarlo otra vez”. No se muestra una señal de error ni se pierde el progreso.</li><li>Al completar la tabla, podrás repetirla o continuar con la siguiente.</li><li>Si sales antes de terminar, la sesión queda guardada en este dispositivo y podrás retomarla.</li></ul><h2>Consejos de acompañamiento</h2><ul><li>Ofrece una sola instrucción cada vez y permite pausas breves.</li><li>Evita competir por velocidad. La precisión y la confianza importan más que terminar rápido.</li><li>Invita al niño a elegir entre opciones. Dar control favorece la autonomía.</li><li>Adapta la duración al niño: esta versión usa bloques breves y no penaliza el tiempo.</li></ul><p class="small-note">Esta herramienta es un apoyo educativo general, no una evaluación clínica ni un sustituto de las adaptaciones recomendadas por docentes o profesionales que conocen al niño.</p></div></section>
+</main>
+<div id="pause-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="pause-title"><div class="pause-box"><div class="pause-emoji">🌿</div><h2 id="pause-title">Tomamos un descanso</h2><p>Respira, estírate o toma agua. Tu progreso está a salvo.</p><button id="resume-btn" class="primary full">Estoy listo para seguir</button><button id="save-exit-btn" class="text-button full">Guardar y salir</button></div></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<footer><span>Multiplica Conmigo</span><span>Aprender a tu ritmo también es avanzar.</span></footer>
+<script src="./app.js"></script><script src="./register-sw.js"></script>
+</body></html>

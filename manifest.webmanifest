@@ -1,0 +1,19 @@
+{
+  "name": "Multiplica Conmigo",
+  "short_name": "Multiplica",
+  "description": "Practica matemáticas a tu ritmo.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf8ef",
+  "theme_color": "#173f35",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
