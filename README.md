@@ -3,11 +3,11 @@
 Aplicación web progresiva (PWA) para práctica breve y amable de matemáticas, diseñada con principios de accesibilidad, autonomía y baja carga cognitiva.
 
 ## Incluye
-- Multiplicación (tablas 1–12), división relacionada y resta.
+- Suma, resta, multiplicación (tablas 1–12) y división relacionada.
 - Nombre opcional del niño.
 - 10 ejercicios por sesión; respuesta por opciones grandes o teclado numérico.
 - Mensajes de reintento amables; no muestra “incorrecto” ni revela la solución al fallar.
-- Pistas, pausa, progreso visual, celebración final, repetición o siguiente tabla.
+- Pistas, pausa, progreso visual y celebración final con elección de tres tablas siguientes, suma, resta, división o regreso al menú principal.
 - Guardado local de sesiones y borrador sin cuenta, reanudación tras salir y exportación JSON.
 - Diseño responsive para móvil, tableta y PC; manifest PWA y service worker para uso sin conexión después de la primera carga.
 - Respeta `prefers-reduced-motion`, controles grandes, foco visible, etiquetas accesibles y regiones `aria-live`.
